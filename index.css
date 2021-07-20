@@ -1,0 +1,78 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #000;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 165px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8em;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+aside.toc-nav {
+  right: 1% !important;
+  max-height: 80% !important;
+}
+aside.page_toc {
+  font-size: 0.75em !important;
+}
+
+
+/* multiple image alignment */
+.container {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}
+
+.container > img {
+  padding: 5px;
+}
+
+/* figure image */
+figure {
+  border: thin #c0c0c0 solid;
+  padding: 5px;
+  max-width: 800px;
+  display: flex;
+  flex-flow: column;
+  margin: 5px auto !important;
+}
+
+figcaption {
+  background-color: #222;
+  color: #fff;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  text-align: center;
+}

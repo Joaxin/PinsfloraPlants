@@ -1,28 +1,117 @@
-<!DOCTYPE >
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>My Docs</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/docute@4/dist/docute.css"
-    />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PinsfloraSpecies</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="referrer" content="no-referrer"/> 
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
+<link 
+    rel="stylesheet"
+    href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css"
+    title="docsify-darklight-theme"
+    type="text/css"
+/>
+<link rel="stylesheet" href="//unpkg.com/docsify-gifcontrol/dist/docsify-gifcontrol.css">
 <!-- require APlayer -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <!-- require MetingJS -->
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-    <style>
-    </style>
-  </head>
+<link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+  <div id="app">⏰Please wait...</div>
+  <script>
+    window.$docsify = {
+      name: 'PinsfloraSpecies',
+      repo: '',
+      logo: '',
+      loadSidebar: true,
+      autoHeader: true,
+      subMaxLevel: 0,
+      maxLevel: 4,
+      sidebarDisplayLevel: 2, // set sidebar display level
+      loadNavbar: true,
+      coverpage: true,
+      auto2top: true,
+      // relativePath: true,
+      executeScript: true,
+      mergeNavbar: true,
+      count:{
+    countable:true,
+    fontsize:'0.9em',
+    color:'rgb(90,90,90)',
+    language:'chinese'
+  },
+  pagination: {
+    previousText: '上一章节',
+    nextText: '下一章节',
+    crossChapter: true,
+    crossChapterText: true,
+  },
+  tabs: {
+    persist    : true,      // default
+    sync       : true,      // default
+    theme      : 'classic', // default
+    tabComments: true,      // default
+    tabHeadings: true       // default
+  },
+  toc: {
+    tocMaxLevel: 5,
+    target: 'h2, h3, h4, h5, h6'
+  },
+    'flexible-alerts': {
+      style: 'flat'
+    },
+      search: 'auto', 
+      plugins: [
+    function(hook) {
+      hook.beforeEach(function(content) {
+      let nmusicbox = content.match(/\{N\d+\}/g);
+      const nplayer_pre = "<iframe frameborder='no' border='0' marginwidth='0' marginheight='0' width=100% height=86 src='//music.163.com/outchain/player?type=2&id=";
 
-  <body>
-    <div id="docute"></div>
-  </body>
-  <script src="https://unpkg.com/docute@4/dist/docute.js"></script>
-  <script src="./script.js"></script>
+      let nplayer_after = "";
+      if (nmusicbox) {
+        nmusicbox.forEach(function (item, idx) {
+          nplayer_after = item.replace(/(^\s*)|(\s*$)/g, "").replace(/[{N}]/g, '') + "&auto=1&height=66&auto=0'></iframe>"
+          content = content.replace(item, nplayer_pre + nplayer_after)
+        })
+      }
+      let melting_nsong = content.match(/\{M\d+\}/g);
+      const nsong_pre = '<meting-js server="netease" type="song" id="'
+      let nsong_after = "";
+      if (melting_nsong) {
+        melting_nsong.forEach(function (item, idx) {
+          nsong_after = item.replace(/(^\s*)|(\s*$)/g, "").replace(/[{M}]/g, '') + '"></meting-js>'
+          content = content.replace(item, nsong_pre + nsong_after)
+        })
+      }
+      return content;
+      });
+    }
+  ]
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <script 
+    src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"
+    type="text/javascript">
+</script>
+<script src="//unpkg.com/docsify-gifcontrol/dist/docsify-gifcontrol.js"></script>
+<script src="//unpkg.com/docsify-plugin-toc"></script>
+<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+<script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+</body>
 </html>
