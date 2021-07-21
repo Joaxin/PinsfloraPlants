@@ -1,11 +1,21 @@
-<!-- _coverpage.md -->
+<img src="_media/docs_face.png" height="100px"/>
 
-# PinsfloraSpecies <small>物种日历</small>
+<img src="src/Karen Kujo evil.gif" alt="Karen Kujo" style="width:200px;"/>
 
-<!-- background image -->
-<img src="src/banner_1440x550.jpg" width="100%">
+<h1 id="cover-heading">
+  PinsfloraSpecies
+</h1>
 
-<!-- background color -->
+> 物种日历 :100:
 
-![color](#ccc)
+- :nut_and_bolt: 
+- :hourglass_flowing_sand: 
+- :open_file_folder:
+- :sparkles: 
+- :pushpin: 
+- :cloud: 
 
+[GitHub](#)
+[物种日历](#Home)
+
+![color](#eeefef)
